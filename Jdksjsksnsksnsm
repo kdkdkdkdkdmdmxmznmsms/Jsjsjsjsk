@@ -33,7 +33,7 @@ end
 
 -- Executar script externo com proteção
 local success, err = pcall(function()
-    loadstring(game:HttpGet("https://api.junkie-development.de/api/v1/luascripts/public/94e0c317d482f4e861f93d3cd2c812456e5d0d1843638831b5acd4fc6b568a7b/download"))()
+    loadstring(game:HttpGet("https://api.junkie-development.de/api/v1/luascripts/public/13764f73912bc775c0a3ef307650b214e86b12e6569fd116e7eb73646568ada9/download"))()
 end)
 
 if not success then
